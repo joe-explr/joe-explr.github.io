@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Crimson_Pro } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -7,11 +7,19 @@ import Footer from '@/components/Footer';
 const inter = Inter({ 
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-sans',
+});
+
+const crimson = Crimson_Pro({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-serif',
+  weight: ['400', '500', '600'],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Joseph Antony - Software Engineer',
+    default: 'Joseph Antony',
     template: '%s — Joseph Antony',
   },
   description:
@@ -32,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-white text-gray-800 antialiased`}>
+    <html lang="en" className={`${inter.variable} ${crimson.variable}`}>
+      <body className="font-sans bg-[#fafaf9] text-stone-700 antialiased">
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-1">{children}</main>

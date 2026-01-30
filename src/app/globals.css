@@ -1,21 +1,26 @@
 @import "tailwindcss";
 
 /* ============================================
-   Minimalist Light Theme
+   Elegant Minimal Theme
+   Inspired by kyswtn.com
    ============================================ */
 
 :root {
-  --color-primary: #374151;      /* Soft gray-700 */
-  --color-accent: #6366f1;       /* Soft indigo */
-  --color-accent-light: #eef2ff; /* Indigo-50 */
-  --color-text: #1f2937;         /* Gray-800 */
-  --color-text-muted: #6b7280;   /* Gray-500 */
-  --color-bg: #ffffff;
-  --color-bg-alt: #fafafa;
-  --color-border: #f3f4f6;       /* Gray-100 */
+  --color-bg: #fafaf9;           /* Off-white / warm gray */
+  --color-text: #57534e;         /* Stone-600 */
+  --color-heading: #1c1917;      /* Stone-900 - near black */
+  --color-muted: #a8a29e;        /* Stone-400 */
+  --color-border: #e7e5e4;       /* Stone-200 */
+  --color-accent: #78716c;       /* Stone-500 */
 }
 
-/* Custom scrollbar - subtle */
+/* Font variables for Tailwind */
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
+}
+
+/* Scrollbar - minimal */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -26,76 +31,79 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #e5e7eb;
+  background: var(--color-border);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d1d5db;
+  background: var(--color-muted);
 }
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Selection color */
 ::selection {
-  background-color: var(--color-accent);
-  color: white;
+  background-color: #d6d3d1;
+  color: var(--color-heading);
 }
 
-/* Prose styles for blog/project content */
+/* Typography utilities */
+.font-serif {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+}
+
+/* Prose styles for content */
 .prose {
-  @apply text-gray-600 leading-relaxed;
+  @apply text-stone-600 leading-relaxed;
 }
 
 .prose h1 {
-  @apply text-2xl font-semibold text-gray-800 mt-10 mb-4 tracking-tight;
+  @apply font-serif text-2xl font-medium text-stone-900 mt-12 mb-5 tracking-tight;
 }
 
 .prose h2 {
-  @apply text-xl font-semibold text-gray-800 mt-10 mb-4 tracking-tight;
+  @apply font-serif text-xl font-medium text-stone-900 mt-12 mb-4 tracking-tight;
 }
 
 .prose h3 {
-  @apply text-lg font-medium text-gray-800 mt-8 mb-3;
+  @apply font-serif text-lg font-medium text-stone-800 mt-8 mb-3;
 }
 
 .prose p {
-  @apply mb-5 text-gray-600;
+  @apply mb-5 text-stone-600 leading-relaxed;
 }
 
 .prose ul {
-  @apply list-disc list-outside ml-5 mb-5 space-y-2 text-gray-600;
+  @apply list-disc list-outside ml-5 mb-5 space-y-2;
 }
 
 .prose ol {
-  @apply list-decimal list-outside ml-5 mb-5 space-y-2 text-gray-600;
+  @apply list-decimal list-outside ml-5 mb-5 space-y-2;
 }
 
 .prose li {
-  @apply text-gray-600 pl-1;
+  @apply text-stone-600 pl-1;
 }
 
 .prose a {
-  @apply text-indigo-600 hover:text-indigo-700 underline underline-offset-2 decoration-indigo-200 hover:decoration-indigo-400 transition-colors;
+  @apply text-stone-800 underline underline-offset-2 decoration-stone-300 hover:decoration-stone-500 transition-colors;
 }
 
 .prose code {
-  @apply bg-gray-50 px-1.5 py-0.5 rounded text-sm font-mono text-gray-700 border border-gray-100;
+  @apply bg-stone-100 px-1.5 py-0.5 rounded text-sm font-mono text-stone-700;
 }
 
 .prose pre {
-  @apply bg-gray-50 text-gray-800 p-5 rounded-lg overflow-x-auto mb-5 border border-gray-100;
+  @apply bg-stone-100 text-stone-800 p-5 rounded-lg overflow-x-auto mb-5 text-sm;
 }
 
 .prose pre code {
-  @apply bg-transparent p-0 border-0;
+  @apply bg-transparent p-0;
 }
 
 .prose blockquote {
-  @apply border-l-2 border-gray-200 pl-5 italic text-gray-500 my-6;
+  @apply border-l-2 border-stone-300 pl-5 italic text-stone-500 my-6 font-serif;
 }
 
 .prose img {
@@ -103,14 +111,14 @@ html {
 }
 
 .prose hr {
-  @apply my-10 border-gray-100;
+  @apply my-12 border-stone-200;
 }
 
 .prose strong {
-  @apply font-medium text-gray-800;
+  @apply font-medium text-stone-800;
 }
 
-/* Line clamp utility */
+/* Line clamp */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -123,14 +131,4 @@ html {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-/* Subtle animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out;
 }

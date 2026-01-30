@@ -4,37 +4,34 @@ import { getBlogPosts } from '@/lib/content';
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: 'Thoughts on software engineering, distributed systems, and technology.',
+  description: 'Writing on engineering and systems.',
 };
 
 export default function BlogPage() {
   const posts = getBlogPosts();
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16">
+    <div className="max-w-2xl mx-auto px-6 py-16">
       <header className="mb-12">
-        <h1 className="text-2xl font-semibold text-gray-900 tracking-tight mb-3">
-          Blog
-        </h1>
-        <p className="text-gray-500">
-          Thoughts on engineering, systems, and learning.
+        <h1 className="font-serif text-2xl text-stone-900 mb-3">Blog</h1>
+        <p className="text-stone-500">
+          Thoughts on engineering and systems.
         </p>
       </header>
 
       {posts.length > 0 ? (
-        <div className="space-y-1">
+        <ul className="divide-y divide-stone-200/60">
           {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="block group"
-            >
-              <article className="py-5 -mx-4 px-4 rounded-lg hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0">
-                <div className="flex items-start justify-between gap-4 mb-2">
-                  <h2 className="font-medium text-gray-900 group-hover:text-indigo-600 transition-colors">
+            <li key={post.slug}>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group block py-6"
+              >
+                <div className="flex items-baseline justify-between gap-4 mb-2">
+                  <h2 className="text-stone-800 group-hover:text-stone-600 transition-colors">
                     {post.title}
                   </h2>
-                  <span className="text-sm text-gray-400 shrink-0">
+                  <span className="text-xs text-stone-400 tabular-nums shrink-0">
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'short',
@@ -42,22 +39,15 @@ export default function BlogPage() {
                     })}
                   </span>
                 </div>
-                <p className="text-sm text-gray-500 line-clamp-2">
+                <p className="text-sm text-stone-500 leading-relaxed line-clamp-2">
                   {post.description}
                 </p>
-                {post.readingTime && (
-                  <span className="text-xs text-gray-400 mt-2 inline-block">
-                    {post.readingTime}
-                  </span>
-                )}
-              </article>
-            </Link>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       ) : (
-        <p className="text-gray-400 text-center py-12">
-          No posts yet.
-        </p>
+        <p className="text-stone-400 py-12">No posts yet.</p>
       )}
     </div>
   );

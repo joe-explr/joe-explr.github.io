@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
 import { getProjects, getProjectBySlug } from '@/lib/content';
 import MarkdownContent from '@/components/MarkdownContent';
 
@@ -37,22 +36,21 @@ export default function ProjectPage({ params }: Props) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16">
+    <div className="max-w-2xl mx-auto px-6 py-16">
       <Link
         href="/projects"
-        className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gray-600 transition-colors mb-12"
+        className="text-sm text-stone-400 hover:text-stone-600 transition-colors"
       >
-        <ArrowLeft className="w-4 h-4" />
-        Back to projects
+        ← Projects
       </Link>
 
-      <article>
+      <article className="mt-10">
         <header className="mb-10">
-          <h1 className="text-2xl font-semibold text-gray-900 tracking-tight mb-4">
+          <h1 className="font-serif text-2xl text-stone-900 mb-4">
             {project.meta.title}
           </h1>
           
-          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+          <div className="flex flex-wrap items-center gap-3 text-sm text-stone-400">
             {project.meta.date && (
               <time>
                 {new Date(project.meta.date).toLocaleDateString('en-US', {
@@ -64,11 +62,11 @@ export default function ProjectPage({ params }: Props) {
             {project.meta.tags && project.meta.tags.length > 0 && (
               <>
                 <span>·</span>
-                <div className="flex flex-wrap gap-2">
-                  {project.meta.tags.map((tag: string) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
+                {project.meta.tags.map((tag: string, i: number) => (
+                  <span key={tag}>
+                    {tag}{i < project.meta.tags.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
               </>
             )}
           </div>
