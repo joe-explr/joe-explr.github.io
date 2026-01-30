@@ -1,50 +1,122 @@
-# Joseph B Antony - Portfolio
+# Joseph B Antony - Portfolio & Blog
 
-Personal portfolio website showcasing my experience as a Backend Software Engineer.
+Personal portfolio and blog website built with Next.js, showcasing my experience as a Backend Software Engineer.
 
 ## Live Site
 
 Visit: [joe-explr.github.io](https://joe-explr.github.io)
 
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: Tailwind CSS
+- **Content**: Markdown with gray-matter
+- **Language**: TypeScript
+- **Deployment**: GitHub Pages (Static Export)
+
 ## Project Structure
 
 ```
 joe-explr.github.io/
-├── index.html              # Main HTML file
-├── css/
-│   └── styles.css          # All styles (variables, components, responsive)
-├── assets/
-│   └── icons/
-│       └── icons.svg       # SVG icon sprite
-├── Joseph_CV_Backend.pdf   # Resume/CV
-└── README.md               # This file
+├── src/
+│   ├── app/
+│   │   ├── page.tsx              # Home (Portfolio/About)
+│   │   ├── layout.tsx            # Root layout with Header/Footer
+│   │   ├── globals.css           # Global styles
+│   │   ├── projects/
+│   │   │   ├── page.tsx          # Projects list
+│   │   │   └── [slug]/
+│   │   │       └── page.tsx      # Individual project page
+│   │   └── blog/
+│   │       ├── page.tsx          # Blog list
+│   │       └── [slug]/
+│   │           └── page.tsx      # Individual blog post
+│   ├── components/
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   ├── ProjectCard.tsx
+│   │   ├── BlogCard.tsx
+│   │   └── ...
+│   └── lib/
+│       └── content.ts            # Content utilities
+├── content/
+│   ├── projects/                 # Project markdown files
+│   │   ├── distributed-system.md
+│   │   └── ...
+│   └── blog/                     # Blog post markdown files
+│       ├── welcome.md
+│       └── ...
+├── public/
+│   └── Joseph_CV_Backend.pdf     # Resume
+└── package.json
 ```
 
 ## Features
 
-- Modern, responsive design
-- Clean sections for About, Skills, Experience, Projects, and Education
-- Mobile-friendly layout
-- Fast loading (minimal external dependencies)
+- Responsive, modern design
+- Markdown-based content management
 - SEO optimized with meta tags
-- Accessible markup with semantic HTML
+- Static site generation for fast loading
+- Dynamic routing for projects and blog posts
 
-## Tech Stack
+## Adding Content
 
-- HTML5 (Semantic elements)
-- CSS3 (Variables, Flexbox, Grid)
-- Google Fonts (Inter)
+### Add a New Project
+
+Create a new `.md` file in `content/projects/`:
+
+```markdown
+---
+title: "Project Title"
+description: "Brief description"
+tags: ["Tag1", "Tag2"]
+date: "2024-01-01"
+---
+
+Your project content here...
+```
+
+### Add a New Blog Post
+
+Create a new `.md` file in `content/blog/`:
+
+```markdown
+---
+title: "Post Title"
+description: "Brief description"
+date: "2024-01-01"
+---
+
+Your blog content here...
+```
 
 ## Local Development
 
-Simply open `index.html` in your browser to preview locally.
-
 ```bash
-# Or use a local server
-python -m http.server 8000
-# Then visit http://localhost:8000
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npx serve out
 ```
 
 ## Deployment
 
-This site is automatically deployed via GitHub Pages when changes are pushed to the `main` branch.
+The site is automatically deployed to GitHub Pages on push to `main` branch via GitHub Actions.
+
+To deploy manually:
+
+```bash
+npm run build
+# The 'out' directory contains the static site
+```
+
+## License
+
+MIT
