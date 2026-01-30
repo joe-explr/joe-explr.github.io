@@ -23,13 +23,17 @@ export const metadata: Metadata = {
     template: '%s — Joseph Antony',
   },
   description:
-    'Backend Software Engineer building scalable distributed systems.',
+    'Software Engineer building scalable distributed systems.',
   keywords: [
-    'Backend Engineer',
+    'Systems Engineer',
     'Software Engineer',
     'Java',
+    'Go',
+    'C++',
+    'Rust',
     'Spring Boot',
     'Distributed Systems',
+    'Compilers',
   ],
   authors: [{ name: 'Joseph Antony' }],
 };

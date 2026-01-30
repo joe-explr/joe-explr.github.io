@@ -34,7 +34,7 @@ export default function Home() {
         <h1 className="font-serif text-2xl text-stone-900 mb-4">
           Joseph Antony
         </h1>
-        <p className="text-stone-500 mb-1">
+        <p className="text-stone-800 mb-1">
           Backend Software Engineer
         </p>
         <p className="text-stone-600 leading-relaxed mt-4 max-w-lg">
@@ -45,7 +45,7 @@ export default function Home() {
         <div className="flex gap-4 mt-6 text-sm">
           <a
             href="mailto:jajoseph.antony18@gmail.com"
-            className="text-stone-500 hover:text-stone-800 transition-colors"
+            className="text-stone-800 hover:text-stone-800 transition-colors"
           >
             Email
           </a>
@@ -54,7 +54,7 @@ export default function Home() {
             href="https://github.com/joseph-b-antony-70"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-stone-500 hover:text-stone-800 transition-colors inline-flex items-center gap-0.5"
+            className="text-stone-800 hover:text-stone-800 transition-colors inline-flex items-center gap-0.5"
           >
             GitHub
             <ArrowUpRight className="w-3 h-3" />
@@ -64,7 +64,7 @@ export default function Home() {
             href="https://linkedin.com/in/joseph-b-antony-70"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-stone-500 hover:text-stone-800 transition-colors inline-flex items-center gap-0.5"
+            className="text-stone-800 hover:text-stone-800 transition-colors inline-flex items-center gap-0.5"
           >
             LinkedIn
             <ArrowUpRight className="w-3 h-3" />
@@ -82,7 +82,7 @@ export default function Home() {
                 <h3 className="text-stone-800 font-medium">{exp.title}</h3>
                 <span className="text-xs text-stone-400 tabular-nums">{exp.period}</span>
               </div>
-              <p className="text-stone-500 text-sm mb-2">{exp.company}</p>
+              <p className="text-stone-800 text-sm mb-2">{exp.company}</p>
               <p className="text-stone-600 text-sm leading-relaxed">{exp.description}</p>
             </div>
           ))}
@@ -152,14 +152,14 @@ export default function Home() {
           <div className="flex items-baseline justify-between gap-4">
             <div>
               <h3 className="text-stone-800">Stony Brook University</h3>
-              <p className="text-sm text-stone-500">M.S. Computer Science</p>
+              <p className="text-sm text-stone-800">M.S. Computer Science</p>
             </div>
             <span className="text-xs text-stone-400 tabular-nums">2024–2026</span>
           </div>
           <div className="flex items-baseline justify-between gap-4">
             <div>
               <h3 className="text-stone-800">Visvesvaraya Technological University</h3>
-              <p className="text-sm text-stone-500">B.E. Information Science</p>
+              <p className="text-sm text-stone-800">B.E. Information Science</p>
             </div>
             <span className="text-xs text-stone-400 tabular-nums">2016–2020</span>
           </div>
