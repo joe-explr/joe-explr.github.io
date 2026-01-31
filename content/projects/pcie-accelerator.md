@@ -3,11 +3,14 @@ title: "Datacenter PCIe Accelerator Co-Simulation Platform"
 description: "QEMU-Vivado co-simulated PCIe accelerator with DMA/MSI-X, NIC bridge and ZeroMQ transport."
 tags: ["FPGA", "PCIe", "QEMU", "Vivado", "Systems"]
 date: "2024-12-01"
+github: "https://github.com/username/pcie-cosim-platform"
 ---
 
 ## Overview
 
 Developed a comprehensive co-simulation platform that enables reproducible host-FPGA verification without requiring RTL changes. This platform bridges the gap between software simulation and hardware development.
+
+![PCIe Co-Simulation Architecture](/images/pcie-cosim-architecture.png)
 
 ## Architecture
 

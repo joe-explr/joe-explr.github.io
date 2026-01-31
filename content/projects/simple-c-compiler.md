@@ -3,11 +3,14 @@ title: "University Simple-C Compiler"
 description: "Complete compiler with lexical analysis, parsing, semantic checks, LLVM-style IR, and x86 code generation."
 tags: ["Compilers", "C++", "LLVM", "x86"]
 date: "2024-09-01"
+github: "https://github.com/username/simple-c-compiler"
 ---
 
 ## Overview
 
 A fully-featured compiler for a subset of C, implementing the complete compilation pipeline from source code to x86 assembly. Built as part of graduate coursework to understand compiler construction fundamentals.
+
+![Compiler Pipeline Flow](/images/compiler-pipeline-diagram.png)
 
 ## Compilation Pipeline
 

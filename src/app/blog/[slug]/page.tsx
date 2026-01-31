@@ -36,7 +36,7 @@ export default function BlogPostPage({ params }: Props) {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-16">
+    <div className="max-w-4xl mx-auto px-6 lg:px-16 py-16">
       <Link
         href="/blog"
         className="text-sm text-stone-400 hover:text-stone-600 transition-colors"

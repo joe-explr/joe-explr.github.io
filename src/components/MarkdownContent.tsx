@@ -73,6 +73,20 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
           </blockquote>
         ),
         hr: () => <hr className="my-12 border-stone-200" />,
+        img: ({ src, alt }) => (
+          <figure className="my-8">
+            <img
+              src={src}
+              alt={alt || ''}
+              className="rounded-lg w-full shadow-sm border border-stone-200"
+            />
+            {alt && (
+              <figcaption className="text-center text-sm text-stone-400 mt-3 italic">
+                {alt}
+              </figcaption>
+            )}
+          </figure>
+        ),
         strong: ({ children }) => (
           <strong className="font-medium text-stone-800">{children}</strong>
         ),

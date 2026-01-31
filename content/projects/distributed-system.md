@@ -3,11 +3,14 @@ title: "Distributed System - Multi-Paxos Sharded Datastore"
 description: "Built and evaluated a Multi-Paxos + 2PC sharded datastore, implementing WAL recovery and distributed locking."
 tags: ["Distributed Systems", "Paxos", "2PC", "Go"]
 date: "2025-01-15"
+github: "https://github.com/username/distributed-paxos-datastore"
 ---
 
 ## Overview
 
 A comprehensive distributed datastore implementation featuring Multi-Paxos consensus combined with Two-Phase Commit (2PC) for handling cross-shard transactions.
+
+![Multi-Paxos Consensus Architecture](/images/distributed-paxos-architecture.png)
 
 ## Key Features
 

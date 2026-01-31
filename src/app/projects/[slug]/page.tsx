@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { Github } from 'lucide-react';
 import { getProjects, getProjectBySlug } from '@/lib/content';
 import MarkdownContent from '@/components/MarkdownContent';
 
@@ -36,7 +37,7 @@ export default function ProjectPage({ params }: Props) {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-16">
+    <div className="max-w-4xl mx-auto px-6 lg:px-16 py-16">
       <Link
         href="/projects"
         className="text-sm text-stone-400 hover:text-stone-600 transition-colors"
@@ -67,6 +68,20 @@ export default function ProjectPage({ params }: Props) {
                     {tag}{i < project.meta.tags.length - 1 ? ', ' : ''}
                   </span>
                 ))}
+              </>
+            )}
+            {project.meta.github && (
+              <>
+                <span>·</span>
+                <a
+                  href={project.meta.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-stone-500 hover:text-stone-800 transition-colors"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>Source Code</span>
+                </a>
               </>
             )}
           </div>

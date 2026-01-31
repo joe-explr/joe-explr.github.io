@@ -3,11 +3,14 @@ title: "Custom KProbe Monitoring Tool"
 description: "Linux kernel monitoring tool using kprobe to measure context switches, interrupts, and simulate job scheduler behavior."
 tags: ["Linux Kernel", "Systems", "C", "Performance"]
 date: "2024-10-15"
+github: "https://github.com/username/kprobe-monitor"
 ---
 
 ## Overview
 
 A custom kernel monitoring tool built using Linux kprobes to gain deep insights into kernel behavior, scheduler decisions, and system performance characteristics.
+
+![KProbe Monitoring Architecture](/images/kprobe-monitoring-diagram.png)
 
 ## Features
 

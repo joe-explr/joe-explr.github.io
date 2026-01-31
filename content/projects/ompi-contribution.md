@@ -3,6 +3,7 @@ title: "Open MPI (OMPI) Open Source Contribution"
 description: "Contributing to the Open MPI high-performance message passing library for parallel computing."
 tags: ["Open Source", "MPI", "HPC", "C"]
 date: "2024-08-01"
+github: "https://github.com/open-mpi/ompi"
 ---
 
 ## Overview

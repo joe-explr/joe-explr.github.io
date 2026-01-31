@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <header className="border-b border-stone-200/60">
-      <nav className="max-w-2xl mx-auto px-6 py-5">
+      <nav className="max-w-6xl mx-auto px-6 lg:px-16 py-5">
         <div className="flex items-center justify-between">
           <Link 
             href="/" 

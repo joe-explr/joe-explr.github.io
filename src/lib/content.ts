@@ -10,6 +10,7 @@ export interface ProjectMeta {
   tags: string[];
   date: string;
   slug: string;
+  github?: string;
 }
 
 export interface BlogMeta {
@@ -18,6 +19,16 @@ export interface BlogMeta {
   date: string;
   slug: string;
   readingTime?: string;
+}
+
+export interface ExperienceMeta {
+  title: string;
+  company: string;
+  period: string;
+  location: string;
+  description: string;
+  slug: string;
+  order: number;
 }
 
 export function getProjects(): ProjectMeta[] {
@@ -42,6 +53,7 @@ export function getProjects(): ProjectMeta[] {
         tags: data.tags || [],
         date: data.date || '',
         slug: file.replace(/\.mdx?$/, ''),
+        github: data.github || '',
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -72,6 +84,7 @@ export function getProjectBySlug(slug: string) {
       tags: data.tags || [],
       date: data.date || '',
       slug,
+      github: data.github || '',
     },
     content,
   };
@@ -137,6 +150,66 @@ export function getBlogPostBySlug(slug: string) {
       date: data.date || '',
       slug,
       readingTime,
+    },
+    content,
+  };
+}
+
+export function getExperiences(): ExperienceMeta[] {
+  const experiencesDir = path.join(contentDirectory, 'experiences');
+  
+  if (!fs.existsSync(experiencesDir)) {
+    return [];
+  }
+
+  const files = fs.readdirSync(experiencesDir);
+  
+  const experiences = files
+    .filter((file) => file.endsWith('.mdx') || file.endsWith('.md'))
+    .map((file) => {
+      const filePath = path.join(experiencesDir, file);
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      const { data } = matter(fileContent);
+      
+      return {
+        title: data.title || '',
+        company: data.company || '',
+        period: data.period || '',
+        location: data.location || '',
+        description: data.description || '',
+        slug: file.replace(/\.mdx?$/, ''),
+        order: data.order || 999,
+      };
+    })
+    .sort((a, b) => a.order - b.order);
+
+  return experiences;
+}
+
+export function getExperienceBySlug(slug: string) {
+  const experiencesDir = path.join(contentDirectory, 'experiences');
+  
+  let filePath = path.join(experiencesDir, `${slug}.mdx`);
+  if (!fs.existsSync(filePath)) {
+    filePath = path.join(experiencesDir, `${slug}.md`);
+  }
+  
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const { data, content } = matter(fileContent);
+
+  return {
+    meta: {
+      title: data.title || '',
+      company: data.company || '',
+      period: data.period || '',
+      location: data.location || '',
+      description: data.description || '',
+      slug,
+      order: data.order || 999,
     },
     content,
   };

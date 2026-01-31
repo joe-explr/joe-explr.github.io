@@ -1,20 +1,21 @@
 import type { Metadata } from 'next';
-import { Inter, Crimson_Pro } from 'next/font/google';
+import { IBM_Plex_Sans, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-const inter = Inter({ 
+const ibmPlexSans = IBM_Plex_Sans({ 
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
+  weight: ['400', '500', '600', '700'],
 });
 
-const crimson = Crimson_Pro({ 
+const spaceGrotesk = Space_Grotesk({ 
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-serif',
-  weight: ['400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -44,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${crimson.variable}`}>
+    <html lang="en" className={`${ibmPlexSans.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans bg-[#fafaf9] text-stone-700 antialiased">
         <div className="min-h-screen flex flex-col">
           <Header />
