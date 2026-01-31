@@ -1,33 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, Download, ArrowRight } from 'lucide-react';
-import { getProjects, getExperiences } from '@/lib/content';
-
-const skills = {
-  'Languages': ['Java', 'Go', 'C++', 'Rust', 'Python'],
-  'Backend': ['Spring Boot', 'Microservices', 'REST APIs'],
-  'Data': ['MySQL', 'MongoDB', 'Redis', 'Kafka'],
-  'Infrastructure': ['AWS', 'GCP', 'Docker', 'Kubernetes'],
-};
-
-const education = [
-  {
-    institution: 'Stony Brook University',
-    degree: 'M.S. Computer Science',
-    period: '2024–2026',
-    description: 'Focus on Distributed Systems, Operating Systems, and Computer Architecture.',
-  },
-  {
-    institution: 'Visvesvaraya Technological University',
-    degree: 'B.E. Information Science',
-    period: '2016–2020',
-    description: 'Foundation in Computer Science fundamentals, Data Structures, and Algorithms.',
-  },
-];
+import { getProjects, getExperiences, getHomeContent } from '@/lib/content';
 
 export default function Home() {
   const projects = getProjects().slice(0, 4);
   const experiences = getExperiences();
+  const home = getHomeContent();
 
   return (
     <div>
@@ -37,62 +16,69 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Left - Text Content */}
             <div className="flex-1 order-2 lg:order-1">
-              <p className="text-stone-500 text-lg mb-2">Hello, I&apos;m</p>
+              <p className="text-stone-500 text-lg mb-2">{home.greeting}</p>
               <h1 className="font-serif text-4xl lg:text-5xl text-stone-900 mb-4">
-                Joseph B Antony
+                {home.name}
               </h1>
               <p className="text-xl lg:text-2xl text-stone-700 font-medium mb-6">
-                Software Engineer
+                {home.title}
               </p>
-              <p className="text-lg text-stone-600 leading-relaxed max-w-xl mb-8">
-                Experienced in building distributed systems, scalable microservices and cloud infrastructure. 
-                Currently pursuing M.S. in Computer Science at Stony Brook University.
+              <p className="text-lg text-stone-600 leading-relaxed max-w-xl mb-8 text-justify">
+                {home.bio}
               </p>
               
               <div className="flex flex-wrap gap-4">
-                <a
-                  href="mailto:jajoseph.antony18@gmail.com"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-lg hover:bg-stone-800 transition-colors font-medium"
-                >
-                  Contact Me
-                </a>
-                <a
-                  href="/Joseph_CV_Backend.pdf"
-                  target="_blank"
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-stone-300 text-stone-700 rounded-lg hover:bg-stone-50 hover:border-stone-400 transition-colors font-medium"
-                >
-                  <Download className="w-4 h-4" />
-                  Download CV
-                </a>
+                {home.email && (
+                  <a
+                    href={`mailto:${home.email}`}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-lg hover:bg-stone-800 transition-colors font-medium"
+                  >
+                    Contact Me
+                  </a>
+                )}
+                {home.cvPath && (
+                  <a
+                    href={home.cvPath}
+                    target="_blank"
+                    className="inline-flex items-center gap-2 px-6 py-3 border border-stone-300 text-stone-700 rounded-lg hover:bg-stone-50 hover:border-stone-400 transition-colors font-medium"
+                  >
+                    <Download className="w-4 h-4" />
+                    Download CV
+                  </a>
+                )}
               </div>
 
               <div className="flex gap-6 mt-8 text-sm">
-                <a
-                  href="https://github.com/joseph-b-antony-70"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-stone-600 hover:text-stone-900 transition-colors inline-flex items-center gap-1"
-                >
-                  GitHub
-                  <ArrowUpRight className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://linkedin.com/in/joseph-b-antony-70"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-stone-600 hover:text-stone-900 transition-colors inline-flex items-center gap-1"
-                >
-                  LinkedIn
-                  <ArrowUpRight className="w-4 h-4" />
-                </a>
+                {home.github && (
+                  <a
+                    href={home.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-stone-600 hover:text-stone-900 transition-colors inline-flex items-center gap-1"
+                  >
+                    GitHub
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                )}
+                {home.linkedin && (
+                  <a
+                    href={home.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-stone-600 hover:text-stone-900 transition-colors inline-flex items-center gap-1"
+                  >
+                    LinkedIn
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                )}
               </div>
             </div>
 
             {/* Right - Image */}
             <div className="flex-shrink-0 order-1 lg:order-2">
               <Image
-                src="/profile.svg"
-                alt="Joseph B Antony"
+                src={home.profileImage}
+                alt={home.name}
                 width={320}
                 height={320}
                 className="w-64 h-64 lg:w-80 lg:h-80 rounded-full border-4 border-stone-100 shadow-lg"
@@ -194,7 +180,7 @@ export default function Home() {
       <section className="py-12 border-t border-stone-200/60">
         <h2 className="font-serif text-2xl text-stone-900 mb-10">Skills</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {Object.entries(skills).map(([category, items]) => (
+          {Object.entries(home.skills).map(([category, items]) => (
             <div key={category}>
               <h3 className="text-sm text-stone-500 uppercase tracking-wide mb-3">
                 {category}
@@ -219,7 +205,7 @@ export default function Home() {
           <div className="absolute left-0 md:left-4 top-0 bottom-0 w-px bg-stone-200" />
           
           <div className="space-y-10">
-            {education.map((edu, index) => (
+            {home.education.map((edu, index) => (
               <div key={index} className="relative pl-8 md:pl-12">
                 {/* Timeline dot */}
                 <div className="absolute left-0 md:left-4 top-1 w-2 h-2 -translate-x-1/2 rounded-full bg-stone-400" />

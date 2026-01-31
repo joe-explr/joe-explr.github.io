@@ -31,6 +31,27 @@ export interface ExperienceMeta {
   order: number;
 }
 
+export interface EducationItem {
+  institution: string;
+  degree: string;
+  period: string;
+  description: string;
+}
+
+export interface HomeContent {
+  name: string;
+  title: string;
+  greeting: string;
+  profileImage: string;
+  email: string;
+  github: string;
+  linkedin: string;
+  cvPath: string;
+  skills: Record<string, string[]>;
+  education: EducationItem[];
+  bio: string;
+}
+
 export function getProjects(): ProjectMeta[] {
   const projectsDir = path.join(contentDirectory, 'projects');
   
@@ -212,5 +233,43 @@ export function getExperienceBySlug(slug: string) {
       order: data.order || 999,
     },
     content,
+  };
+}
+
+export function getHomeContent(): HomeContent {
+  const filePath = path.join(contentDirectory, 'home.md');
+  
+  if (!fs.existsSync(filePath)) {
+    // Return defaults if file doesn't exist
+    return {
+      name: 'Your Name',
+      title: 'Your Title',
+      greeting: "Hello, I'm",
+      profileImage: '/profile.svg',
+      email: '',
+      github: '',
+      linkedin: '',
+      cvPath: '',
+      skills: {},
+      education: [],
+      bio: '',
+    };
+  }
+
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const { data, content } = matter(fileContent);
+
+  return {
+    name: data.name || 'Your Name',
+    title: data.title || 'Your Title',
+    greeting: data.greeting || "Hello, I'm",
+    profileImage: data.profileImage || '/profile.svg',
+    email: data.email || '',
+    github: data.github || '',
+    linkedin: data.linkedin || '',
+    cvPath: data.cvPath || '',
+    skills: data.skills || {},
+    education: data.education || [],
+    bio: content.trim(),
   };
 }
