@@ -40,18 +40,18 @@ export default function ProjectPage({ params }: Props) {
     <div className="max-w-4xl mx-auto px-6 lg:px-16 py-16">
       <Link
         href="/projects"
-        className="text-sm text-stone-400 hover:text-stone-600 transition-colors"
+        className="text-sm text-stone-400 hover:text-stone-600 transition-colors dark:text-stone-500 dark:hover:text-stone-300"
       >
         ← Projects
       </Link>
 
       <article className="mt-10">
         <header className="mb-10">
-          <h1 className="font-serif text-2xl text-stone-900 mb-4">
+          <h1 className="font-serif text-2xl text-stone-900 mb-4 dark:text-stone-50">
             {project.meta.title}
           </h1>
           
-          <div className="flex flex-wrap items-center gap-3 text-sm text-stone-400">
+          <div className="flex flex-wrap items-center gap-3 text-sm text-stone-400 dark:text-stone-500">
             {project.meta.date && (
               <time>
                 {new Date(project.meta.date).toLocaleDateString('en-US', {
@@ -77,7 +77,7 @@ export default function ProjectPage({ params }: Props) {
                   href={project.meta.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-stone-500 hover:text-stone-800 transition-colors"
+                  className="inline-flex items-center gap-1 text-stone-500 hover:text-stone-800 transition-colors dark:text-stone-400 dark:hover:text-stone-200"
                 >
                   <Github className="w-4 h-4" />
                   <span>Source Code</span>

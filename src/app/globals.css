@@ -14,6 +14,19 @@
   --color-accent: #78716c;       /* Stone-500 */
 }
 
+/* Dark mode variables */
+.dark {
+  --color-bg: #1c1917;           /* Stone-900 */
+  --color-text: #d6d3d1;         /* Stone-300 */
+  --color-heading: #fafaf9;      /* Stone-50 - near white */
+  --color-muted: #78716c;        /* Stone-500 */
+  --color-border: #44403c;       /* Stone-700 */
+  --color-accent: #a8a29e;       /* Stone-400 */
+}
+
+/* Dark mode Tailwind config */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Font variables for Tailwind */
 @theme {
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
@@ -48,6 +61,11 @@ html {
   color: var(--color-heading);
 }
 
+.dark ::selection {
+  background-color: #57534e;
+  color: var(--color-heading);
+}
+
 /* Typography utilities */
 .font-serif {
   font-family: var(--font-serif), ui-serif, Georgia, serif;
@@ -55,23 +73,23 @@ html {
 
 /* Prose styles for content */
 .prose {
-  @apply text-stone-600 leading-relaxed;
+  @apply text-stone-600 leading-relaxed dark:text-stone-300;
 }
 
 .prose h1 {
-  @apply font-serif text-2xl font-medium text-stone-900 mt-12 mb-5 tracking-tight;
+  @apply font-serif text-2xl font-medium text-stone-900 mt-12 mb-5 tracking-tight dark:text-stone-50;
 }
 
 .prose h2 {
-  @apply font-serif text-xl font-medium text-stone-900 mt-12 mb-4 tracking-tight;
+  @apply font-serif text-xl font-medium text-stone-900 mt-12 mb-4 tracking-tight dark:text-stone-50;
 }
 
 .prose h3 {
-  @apply font-serif text-lg font-medium text-stone-800 mt-8 mb-3;
+  @apply font-serif text-lg font-medium text-stone-800 mt-8 mb-3 dark:text-stone-100;
 }
 
 .prose p {
-  @apply mb-5 text-stone-600 leading-relaxed;
+  @apply mb-5 text-stone-600 leading-relaxed dark:text-stone-300;
 }
 
 .prose ul {
@@ -83,19 +101,19 @@ html {
 }
 
 .prose li {
-  @apply text-stone-600 pl-1;
+  @apply text-stone-600 pl-1 dark:text-stone-300;
 }
 
 .prose a {
-  @apply text-stone-800 underline underline-offset-2 decoration-stone-300 hover:decoration-stone-500 transition-colors;
+  @apply text-stone-800 underline underline-offset-2 decoration-stone-300 hover:decoration-stone-500 transition-colors dark:text-stone-200 dark:decoration-stone-600 dark:hover:decoration-stone-400;
 }
 
 .prose code {
-  @apply bg-stone-100 px-1.5 py-0.5 rounded text-sm font-mono text-stone-700;
+  @apply bg-stone-100 px-1.5 py-0.5 rounded text-sm font-mono text-stone-700 dark:bg-stone-800 dark:text-stone-300;
 }
 
 .prose pre {
-  @apply bg-stone-100 text-stone-800 p-5 rounded-lg overflow-x-auto mb-5 text-sm;
+  @apply bg-stone-100 text-stone-800 p-5 rounded-lg overflow-x-auto mb-5 text-sm dark:bg-stone-800 dark:text-stone-200;
 }
 
 .prose pre code {
@@ -103,7 +121,7 @@ html {
 }
 
 .prose blockquote {
-  @apply border-l-2 border-stone-300 pl-5 italic text-stone-500 my-6 font-serif;
+  @apply border-l-2 border-stone-300 pl-5 italic text-stone-500 my-6 font-serif dark:border-stone-600 dark:text-stone-400;
 }
 
 .prose img {
@@ -111,11 +129,11 @@ html {
 }
 
 .prose hr {
-  @apply my-12 border-stone-200;
+  @apply my-12 border-stone-200 dark:border-stone-700;
 }
 
 .prose strong {
-  @apply font-medium text-stone-800;
+  @apply font-medium text-stone-800 dark:text-stone-200;
 }
 
 /* Line clamp */

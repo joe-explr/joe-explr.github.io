@@ -13,14 +13,14 @@ export default function BlogPage() {
   return (
     <div className="max-w-5xl mx-auto px-6 lg:px-16 py-16">
       <header className="mb-12">
-        <h1 className="font-serif text-2xl text-stone-900 mb-3">Blog</h1>
-        <p className="text-stone-500">
+        <h1 className="font-serif text-2xl text-stone-900 mb-3 dark:text-stone-50">Blog</h1>
+        <p className="text-stone-500 dark:text-stone-400">
           Thoughts on engineering and systems.
         </p>
       </header>
 
       {posts.length > 0 ? (
-        <ul className="divide-y divide-stone-200/60">
+        <ul className="divide-y divide-stone-200/60 dark:divide-stone-700/60">
           {posts.map((post) => (
             <li key={post.slug}>
               <Link
@@ -28,10 +28,10 @@ export default function BlogPage() {
                 className="group block py-6"
               >
                 <div className="flex items-baseline justify-between gap-4 mb-2">
-                  <h2 className="text-stone-800 group-hover:text-stone-600 transition-colors">
+                  <h2 className="text-stone-800 group-hover:text-stone-600 transition-colors dark:text-stone-100 dark:group-hover:text-stone-300">
                     {post.title}
                   </h2>
-                  <span className="text-xs text-stone-400 tabular-nums shrink-0">
+                  <span className="text-xs text-stone-400 tabular-nums shrink-0 dark:text-stone-500">
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'short',
@@ -39,7 +39,7 @@ export default function BlogPage() {
                     })}
                   </span>
                 </div>
-                <p className="text-sm text-stone-500 leading-relaxed line-clamp-2">
+                <p className="text-sm text-stone-500 leading-relaxed line-clamp-2 dark:text-stone-400">
                   {post.description}
                 </p>
               </Link>
@@ -47,7 +47,7 @@ export default function BlogPage() {
           ))}
         </ul>
       ) : (
-        <p className="text-stone-400 py-12">No posts yet.</p>
+        <p className="text-stone-400 py-12 dark:text-stone-500">No posts yet.</p>
       )}
     </div>
   );

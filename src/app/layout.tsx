@@ -3,6 +3,7 @@ import { IBM_Plex_Sans, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const ibmPlexSans = IBM_Plex_Sans({ 
   subsets: ['latin'],
@@ -45,13 +46,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} ${spaceGrotesk.variable}`}>
-      <body className="font-sans bg-[#fafaf9] text-stone-700 antialiased">
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+    <html lang="en" className={`${ibmPlexSans.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
+      <body className="font-sans bg-[#fafaf9] text-stone-700 antialiased dark:bg-stone-900 dark:text-stone-300 transition-colors">
+        <ThemeProvider>
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

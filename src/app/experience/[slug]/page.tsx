@@ -40,18 +40,18 @@ export default function ExperiencePage({ params }: Props) {
     <div className="max-w-4xl mx-auto px-6 lg:px-16 py-16">
       <Link
         href="/#experience"
-        className="text-sm text-stone-400 hover:text-stone-600 transition-colors"
+        className="text-sm text-stone-400 hover:text-stone-600 transition-colors dark:text-stone-500 dark:hover:text-stone-300"
       >
         ← Back to Home
       </Link>
 
       <article className="mt-10">
         <header className="mb-10">
-          <h1 className="font-serif text-3xl text-stone-900 mb-2">
+          <h1 className="font-serif text-3xl text-stone-900 mb-2 dark:text-stone-50">
             {experience.meta.title}
           </h1>
           
-          <div className="flex flex-wrap items-center gap-4 text-stone-600 mb-4">
+          <div className="flex flex-wrap items-center gap-4 text-stone-600 mb-4 dark:text-stone-400">
             <span className="inline-flex items-center gap-1.5">
               <Building2 className="w-4 h-4" />
               {experience.meta.company}
@@ -68,7 +68,7 @@ export default function ExperiencePage({ params }: Props) {
             )}
           </div>
 
-          <p className="text-lg text-stone-600 leading-relaxed">
+          <p className="text-lg text-stone-600 leading-relaxed dark:text-stone-300">
             {experience.meta.description}
           </p>
         </header>

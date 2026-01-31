@@ -39,18 +39,18 @@ export default function BlogPostPage({ params }: Props) {
     <div className="max-w-4xl mx-auto px-6 lg:px-16 py-16">
       <Link
         href="/blog"
-        className="text-sm text-stone-400 hover:text-stone-600 transition-colors"
+        className="text-sm text-stone-400 hover:text-stone-600 transition-colors dark:text-stone-500 dark:hover:text-stone-300"
       >
         ← Blog
       </Link>
 
       <article className="mt-10">
         <header className="mb-10">
-          <h1 className="font-serif text-2xl text-stone-900 mb-4">
+          <h1 className="font-serif text-2xl text-stone-900 mb-4 dark:text-stone-50">
             {post.meta.title}
           </h1>
           
-          <div className="flex items-center gap-3 text-sm text-stone-400">
+          <div className="flex items-center gap-3 text-sm text-stone-400 dark:text-stone-500">
             <time>
               {new Date(post.meta.date).toLocaleDateString('en-US', {
                 year: 'numeric',
