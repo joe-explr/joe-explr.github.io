@@ -177,17 +177,17 @@ export default function Home() {
       </section>
 
       {/* Skills */}
-      <section className="py-12 border-t border-stone-200/60">
-        <h2 className="font-serif text-2xl text-stone-900 mb-10">Skills</h2>
+      <section className="py-12 border-t border-stone-200/60 dark:border-stone-700/60">
+        <h2 className="font-serif text-2xl text-stone-900 mb-10 dark:text-stone-50">Skills</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {Object.entries(home.skills).map(([category, items]) => (
             <div key={category}>
-              <h3 className="text-sm text-stone-500 uppercase tracking-wide mb-3">
+              <h3 className="text-sm text-stone-500 uppercase tracking-wide mb-3 dark:text-stone-400">
                 {category}
               </h3>
               <ul className="space-y-2">
                 {items.map((skill) => (
-                  <li key={skill} className="text-stone-700">
+                  <li key={skill} className="text-stone-700 dark:text-stone-300">
                     {skill}
                   </li>
                 ))}
