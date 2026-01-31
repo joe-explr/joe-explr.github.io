@@ -170,14 +170,20 @@ export default function Home() {
                 <p className="text-stone-500 line-clamp-2 mb-3">
                   {project.description}
                 </p>
-                {project.date && (
-                  <span className="text-sm text-stone-400">
-                    {new Date(project.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                    })}
+                <div className="flex items-center justify-between">
+                  {project.date && (
+                    <span className="text-sm text-stone-400">
+                      {new Date(project.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                      })}
+                    </span>
+                  )}
+                  <span className="text-sm text-stone-500 group-hover:text-stone-700 transition-colors inline-flex items-center gap-1">
+                    Learn more
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                   </span>
-                )}
+                </div>
               </div>
             </Link>
           ))}
